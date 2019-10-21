@@ -16,7 +16,7 @@ close all
 clc
 
 % Just for saving in a separate folder figures as images
-DEBUG = true; dirpath = 'photos'; ext = '.jpg' ; if ~DEBUG && ~exist(dirpath,'dir') ; mkdir(dirpath); end
+DEBUG = false; dirpath = 'photos'; ext = '.jpg' ; if ~DEBUG && ~exist(dirpath,'dir') ; mkdir(dirpath); end
 
 % -------------------------------
 %
@@ -88,5 +88,5 @@ for i=1:length(Ts)
     legend([p1,p2],'x(t)','Reconstructed'); legend('Location','NorthEast');
     title(strcat(stepName, num2str(i), ' Reconstructed - Ts=1/', Ts_str(i,:))); xlabel('t(sec)');
     
-    if ~DEBUG ; saveas(f,strcat(dirpath, '/', stepName, num2str(i), ' - Ts is 1_', Ts_str(i,:), ext)) ; end 
+    if ~DEBUG ; saveas(f,strcat(dirpath, '/', stepName, num2str(i), ' Sampling with Ts 1_', Ts_str(i,:), ext)) ; end 
 end
