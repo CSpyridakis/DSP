@@ -15,9 +15,6 @@ clear all
 close all
 clc
 
-% Just for saving in a separate folder figures as images
-DEBUG = false; dirpath = '../photos'; ext = '.jpg' ; if ~DEBUG && ~exist(dirpath,'dir') ; mkdir(dirpath); end
-
 % -------------------------------
 %
 %           Exercise 2
@@ -37,7 +34,6 @@ f = figure();
 p1 = plot(t,x,'b'); 
 legend([p1],'x(t)'); legend('Location','NorthEast');
 title(stepName); ylabel('x(t)'); xlabel('t(sec)');
-if ~DEBUG ; saveas(f,strcat(dirpath, '/', stepName, ext)) ; end
 
 % --------------------------------------------------------------------------------
 % 2.2
@@ -53,7 +49,6 @@ f = figure();
 p1 = plot(F,abs(X),'b'); 
 legend([p1],'Amplitude Spectrum of x(t)'); legend('Location','NorthEast');
 title(stepName); ylabel('|X(F)|'); xlabel('frequency');
-if ~DEBUG ; saveas(f,strcat(dirpath, '/', stepName, ext)) ; end
 
 
 % --------------------------------------------------------------------------------
@@ -86,7 +81,5 @@ for i=1:length(Ts)
     hold on;
     p2 = plot(n*Ts(i),x_sampled,'r');
     legend([p1,p2],'x(t)','Reconstructed'); legend('Location','NorthEast');
-    title(strcat(stepName, num2str(i), ' Reconstructed - Ts=1/', Ts_str(i,:))); xlabel('t(sec)');
-    
-    if ~DEBUG ; saveas(f,strcat(dirpath, '/', stepName, num2str(i), ' Sampling with Ts 1_', Ts_str(i,:), ext)) ; end 
+    title(strcat(stepName, num2str(i), ' Reconstructed - Ts=1/', Ts_str(i,:))); xlabel('t(sec)'); 
 end

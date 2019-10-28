@@ -69,7 +69,7 @@ figure
 stem(result);                           %draws the results
 ylabel('Result[n]');
 xlabel('----->n');
-title('Convolution result with the use of Furrier Transform.');    
+title('Convolution result with the use of Fourier Transform.');    
     
     
     
