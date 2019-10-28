@@ -16,7 +16,7 @@ close all
 clc
 
 % Just for saving in a separate folder figures as images
-DEBUG = false; dirpath = 'photos'; ext = '.jpg' ; if ~DEBUG && ~exist(dirpath,'dir') ; mkdir(dirpath); end
+DEBUG = false; dirpath = '../photos'; ext = '.jpg' ; if ~DEBUG && ~exist(dirpath,'dir') ; mkdir(dirpath); end
 
 % -------------------------------
 %
