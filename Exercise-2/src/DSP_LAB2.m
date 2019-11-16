@@ -36,8 +36,25 @@ title('Zero-Pole Map');
 
 
 %d
-
+figure()
+df = pi/128;
+f = [-pi : df : pi];
+b = [0 0.2 0];            
+a = [1 -0.7 -0.18];        
+ 
+freqz(b,a,f)
+title('Diagrams of freqz with n parameter');
+figure();
+freqz(b,a)
+ 
+title('Diagrams of freqz without n parameter');
 %e
+figure();
+b = [-1 0.2 0];            
+a = [1 -0.7 -0.18];        
+ 
+freqz(b,a,f)
+title('Diagrams of freqz with an added pole');
 
 
 %---------------------------------------------------------
