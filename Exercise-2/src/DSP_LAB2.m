@@ -49,7 +49,7 @@ freqz(b,a)
 title('Diagrams of freqz without n parameter');
 
 %e
-b = [0 0 0.2 0];                % new num of tf with pole added on 1 
+b = [0 0.2 0 0];                % new num of tf with pole added on 1 
 a = [1 -1.7 0.52 0.18];         % new den of tf with pole added on 1 
 
 figure(); 
