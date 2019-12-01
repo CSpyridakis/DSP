@@ -121,14 +121,14 @@ Y2 = abs(fftshift(fft(y2)*Ts)).^2;
 
 % Display them
 figure(); 
-subplot(3,1,1); plot(n, x_a, 'b', n, x_a, 'r.'); legend('Reconstructed','Samples'); legend('Location','NorthEast'); title('x(t)'); xlabel('n'); ylabel('x(t)');
-subplot(3,1,2); plot(n, y1, 'b', n, y1, 'r.'); legend('Reconstructed','Samples'); legend('Location','NorthEast'); title('x(t) filtered attenuation = 30db'); xlabel('n'); ylabel('x(t) filtered');
-subplot(3,1,3); plot(n, y2, 'b', n, y2, 'r.'); legend('Reconstructed','Samples'); legend('Location','NorthEast'); title('x(t) filtered attenuation = 50db'); xlabel('n'); ylabel('x(t) filtered');
+subplot(3,1,1); plot(n, x_a, 'b', n, x_a, 'r.'); legend('Reconstructed','Samples'); legend('Location','NorthEast'); title('x(t)'); xlabel('n'); ylabel('A');
+subplot(3,1,2); plot(n, y1, 'b', n, y1, 'r.'); legend('Reconstructed','Samples'); legend('Location','NorthEast'); title('x(t) filtered attenuation = 30db'); xlabel('n'); ylabel('A');
+subplot(3,1,3); plot(n, y2, 'b', n, y2, 'r.'); legend('Reconstructed','Samples'); legend('Location','NorthEast'); title('x(t) filtered attenuation = 50db'); xlabel('n'); ylabel('A');
 
 figure(); 
-subplot(3,1,1); plot(F, X_a, 'b'); title('|X(F)|^2'); xlabel('n'); ylabel('x(t)');
-subplot(3,1,2); plot(F, Y1, 'b'); title('|X(F)|^2 filtered attenuation = 30db'); xlabel('F'); ylabel('x(t) filtered');
-subplot(3,1,3); plot(F, Y2, 'b'); title('|X(F)|^2 filtered attenuation = 50db'); xlabel('F'); ylabel('x(t) filtered');
+subplot(3,1,1); plot(F, X_a, 'b'); title('|X(F)|^2'); xlabel('F'); ylabel('x(t)');
+subplot(3,1,2); plot(F, Y1, 'b'); title('|X(F)|^2 filtered attenuation = 30db'); xlabel('F'); ylabel('A');
+subplot(3,1,3); plot(F, Y2, 'b'); title('|X(F)|^2 filtered attenuation = 50db'); xlabel('F'); ylabel('A');
     
 %3a endsattenuation = 30db
 
@@ -156,12 +156,12 @@ Y3 = abs(fftshift(fft(y3)*Ts)).^2;
 
 % Display them
 figure(); 
-subplot(2,1,1); plot(n, x_b, 'b', n, x_b, 'r.'); legend('Reconstructed','Samples'); legend('Location','NorthEast'); title('x(t)'); xlabel('n'); ylabel('x(t)');
-subplot(2,1,2); plot(n, y3, 'b', n, y3, 'r.'); legend('Reconstructed','Samples'); legend('Location','NorthEast'); title('x(t) filtered'); xlabel('n'); ylabel('x(t) filtered');
+subplot(2,1,1); plot(n, x_b, 'b', n, x_b, 'r.'); legend('Reconstructed','Samples'); legend('Location','NorthEast'); title('x(t)'); xlabel('n'); ylabel('A');
+subplot(2,1,2); plot(n, y3, 'b', n, y3, 'r.'); legend('Reconstructed','Samples'); legend('Location','NorthEast'); title('x(t) filtered'); xlabel('n'); ylabel('A');
 
 figure(); 
-subplot(2,1,1); plot(F, X_b, 'b'); title('|X(F)|^2'); xlabel('n'); ylabel('|X(F)|^2');
-subplot(2,1,2); plot(F, Y3, 'b'); title('|X(F)|^2 filtered'); xlabel('F'); ylabel('|X(F)|^2 filtered');
+subplot(2,1,1); plot(F, X_b, 'b'); title('|X(F)|^2'); xlabel('F'); ylabel('A');
+subplot(2,1,2); plot(F, Y3, 'b'); title('|X(F)|^2 filtered'); xlabel('F'); ylabel('A');
 
 
 %3b ends
