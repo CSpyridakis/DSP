@@ -7,7 +7,7 @@
 %               - Paterakis Isidoros
 %
 %   Created Date : 6/11/2019
-%   Last Updated : 12/12/2019
+%   Last Updated : 13/12/2019
 %
 %   Description: 
 %               Code created for labs of Digital Signal Processing Course
@@ -131,21 +131,14 @@ Y3_HANN1 = abs(fftshift(fft(y3_hann1,NFFT)*Ts));
 Y4_HANN2 = abs(fftshift(fft(y4_hann2,NFFT)*Ts));
 
 % Plot them
-figure(); 
-subplot(2,1,1); plot(F,X); title('Frequency spectrum of x(t) - (|X(F)|)'); xlabel('Frequency'); ylabel('Magnitude');
-subplot(2,1,2); plot(F,Y1_HAMM1); title('Frequency spectrum of filtered x(t) - Hamming: N = 21'); xlabel('Frequency'); ylabel('Magnitude');
+figure(); plot(F,X); title('Frequency spectrum of x(t), Fs=100Hz'); xlabel('Frequency'); ylabel('Magnitude');
+figure();
+subplot(2,1,1); plot(F,Y1_HAMM1); title('Frequency spectrum of filtered x(t) - Hamming: N = 21, Fs=100Hz'); xlabel('Frequency'); ylabel('Magnitude');
+subplot(2,1,2); plot(F,Y2_HAMM2); title('Frequency spectrum of filtered x(t) - Hamming: N = 41, Fs=100Hz'); xlabel('Frequency'); ylabel('Magnitude');
 
 figure(); 
-subplot(2,1,1); plot(F,X); title('Frequency spectrum of x(t) - (|X(F)|)'); xlabel('Frequency'); ylabel('Magnitude');
-subplot(2,1,2); plot(F,Y2_HAMM2); title('Frequency spectrum of filtered x(t) - Hamming: N = 41'); xlabel('Frequency'); ylabel('Magnitude');
-
-figure(); 
-subplot(2,1,1); plot(F,X); title('Frequency spectrum of x(t) - (|X(F)|)'); xlabel('Frequency'); ylabel('Magnitude');
-subplot(2,1,2); plot(F,Y3_HANN1); title('Frequency spectrum of filtered x(t) - Hanning: N = 21'); xlabel('Frequency'); ylabel('Magnitude');
-
-figure(); 
-subplot(2,1,1); plot(F,X); title('Frequency spectrum of x(t) - (|X(F)|)'); xlabel('Frequency'); ylabel('Magnitude');
-subplot(2,1,2); plot(F,Y4_HANN2); title('Frequency spectrum of filtered x(t) - Hanning: N = 41'); xlabel('Frequency'); ylabel('Magnitude');
+subplot(2,1,1); plot(F,Y3_HANN1); title('Frequency spectrum of filtered x(t) - Hanning: N = 21, Fs=100Hz'); xlabel('Frequency'); ylabel('Magnitude');
+subplot(2,1,2); plot(F,Y4_HANN2); title('Frequency spectrum of filtered x(t) - Hanning: N = 41, Fs=100Hz'); xlabel('Frequency'); ylabel('Magnitude');
 
 
 %B2 ends
