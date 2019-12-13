@@ -54,7 +54,7 @@ title('Rectangular and Hamming Frequency Responses'); xlabel('Frequency'); ylabe
 %B1 begins
 
 Wc = 0.5 * pi;              % cutoff frequency
-Fc = Wc / (2*pi);
+Fc = Wc / (2*pi)
 Fs = 100;                   % sampling frequency
 N1 = 21;                    % first window length
 N2 = 41;                    % second window length
@@ -106,6 +106,46 @@ xlabel('Frequency'); ylabel('Magnitude'); title('Hanning: N = 41');
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %B2 begins
+
+Fs = 100;
+Ts = 1/Fs;
+t = [0:Ts:2*pi*2];
+
+x = sin(15*t) + 0.25*sin(200*t);
+
+% Fourier Transform 
+NFFT = 2^nextpow2(length(x));           % NFFT = biggest power of 2, fft works best for power of 2 number of elements (e.g. 256, 512, etc..)
+X = abs(fftshift(fft(x,NFFT)*Ts));
+F = [-Fs/2 : Fs/NFFT : Fs/2-Fs/NFFT];
+
+% Filter
+y1_hamm1 = filter(hammingfilter1,1,x);
+y2_hamm2 = filter(hammingfilter2,1,x);
+y3_hann1 = filter(hanningfilter1,1,x);
+y4_hann2 = filter(hanningfilter2,1,x);
+
+% Fourier Transform
+Y1_HAMM1 = abs(fftshift(fft(y1_hamm1,NFFT)*Ts));
+Y2_HAMM2 = abs(fftshift(fft(y2_hamm2,NFFT)*Ts));
+Y3_HANN1 = abs(fftshift(fft(y3_hann1,NFFT)*Ts));
+Y4_HANN2 = abs(fftshift(fft(y4_hann2,NFFT)*Ts));
+
+% Plot them
+figure(); 
+subplot(2,1,1); plot(F,X); title('Frequency spectrum of x(t) - (|X(F)|)'); xlabel('Frequency'); ylabel('Magnitude');
+subplot(2,1,2); plot(F,Y1_HAMM1); title('Frequency spectrum of filtered x(t) - Hamming: N = 21'); xlabel('Frequency'); ylabel('Magnitude');
+
+figure(); 
+subplot(2,1,1); plot(F,X); title('Frequency spectrum of x(t) - (|X(F)|)'); xlabel('Frequency'); ylabel('Magnitude');
+subplot(2,1,2); plot(F,Y2_HAMM2); title('Frequency spectrum of filtered x(t) - Hamming: N = 41'); xlabel('Frequency'); ylabel('Magnitude');
+
+figure(); 
+subplot(2,1,1); plot(F,X); title('Frequency spectrum of x(t) - (|X(F)|)'); xlabel('Frequency'); ylabel('Magnitude');
+subplot(2,1,2); plot(F,Y3_HANN1); title('Frequency spectrum of filtered x(t) - Hanning: N = 21'); xlabel('Frequency'); ylabel('Magnitude');
+
+figure(); 
+subplot(2,1,1); plot(F,X); title('Frequency spectrum of x(t) - (|X(F)|)'); xlabel('Frequency'); ylabel('Magnitude');
+subplot(2,1,2); plot(F,Y4_HANN2); title('Frequency spectrum of filtered x(t) - Hanning: N = 41'); xlabel('Frequency'); ylabel('Magnitude');
 
 
 %B2 ends
