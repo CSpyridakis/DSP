@@ -22,12 +22,19 @@ During this course, four Labs were carried out with specific learning objectives
 * Butterworth Filter
 * Chebyshev Filter
 
+#### [Lab 4](./Exercise-4):
+* FIR Filters
+* Rectangular Filter and Gibbs phenomenon
+* Hamming Filter
+* Hanning FIlter
+
 ### Documentation
 If you want more information about each lab you could read (or just try to read, unfortunately at this point are only in greek language) the following report files:
 
 1. [Lab 1 - Report](./Exercise-1/doc/DSP%20LAB-1%20REPORT.pdf)
 2. [Lab 2 - Report](./Exercise-2/doc/DSP_Lab2_Report.pdf)
 3. [Lab 3 - Report](./Exercise-3/doc/DSP-LAB-3_REPORT.pdf)
+4. [Lab 4 - Report](./Exercise-4/doc/DSP-LAB-4_REPORT.pdf)
 
 ### Code
 Moreover, code created for these labs is available here:
@@ -35,6 +42,7 @@ Moreover, code created for these labs is available here:
 1. [Lab 1](./Exercise-1/src)
 2. [Lab 2](./Exercise-2/src)
 3. [Lab 3](./Exercise-3/src)
+3. [Lab 4](./Exercise-4/src)
 
 ### Authors
 * Spyridakis Christos
