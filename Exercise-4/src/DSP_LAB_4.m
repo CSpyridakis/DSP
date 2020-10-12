@@ -7,7 +7,7 @@
 %               - Paterakis Isidoros
 %
 %   Created Date : 6/11/2019
-%   Last Updated : 13/12/2019
+%   Last Updated : 16/12/2019
 %
 %   Description: 
 %               Code created for labs of Digital Signal Processing Course
@@ -106,52 +106,96 @@ xlabel('Frequency'); ylabel('Magnitude'); title('Hanning: N = 41');
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %B2 begins
-
+N = 500;
+Tmax = 2;
 Fs = 100;
 Ts = 1/Fs;
-t = [0:Ts:2*pi*2];
-
+t = [0:N-1]*Ts;
+f = [-Fs/2:Fs/N:Fs/2-Fs/N];
 x = sin(15*t) + 0.25*sin(200*t);
 
-% Fourier Transform 
-NFFT = 2^nextpow2(length(x));           % NFFT = biggest power of 2, fft works best for power of 2 number of elements (e.g. 256, 512, etc..)
-X = abs(fftshift(fft(x,NFFT)*Ts));
-F = [-Fs/2 : Fs/NFFT : Fs/2-Fs/NFFT];
+%Filtering the signal through the four different filters
+y1 = filter(hammingfilter1, 1, x);  
+y2 = filter(hammingfilter2, 1, x);
+y3 = filter(hanningfilter1, 1, x);
+y4 = filter(hanningfilter2, 1, x);
 
-% Filter
-y1_hamm1 = filter(hammingfilter1,1,x);
-y2_hamm2 = filter(hammingfilter2,1,x);
-y3_hann1 = filter(hanningfilter1,1,x);
-y4_hann2 = filter(hanningfilter2,1,x);
+%Creating the Fourier transformation for the for different signals
+Y1 = abs(fftshift(fft(y1)*Ts));
+Y2 = abs(fftshift(fft(y2)*Ts));
+Y3 = abs(fftshift(fft(y3)*Ts));
+Y4 = abs(fftshift(fft(y4)*Ts));
+X = abs(fftshift(fft(x,N)*Ts));
 
-% Fourier Transform
-Y1_HAMM1 = abs(fftshift(fft(y1_hamm1,NFFT)*Ts));
-Y2_HAMM2 = abs(fftshift(fft(y2_hamm2,NFFT)*Ts));
-Y3_HANN1 = abs(fftshift(fft(y3_hann1,NFFT)*Ts));
-Y4_HANN2 = abs(fftshift(fft(y4_hann2,NFFT)*Ts));
-
-% Plot them
-figure(); plot(F,X); title('Frequency spectrum of x(t), Fs=100Hz'); xlabel('Frequency'); ylabel('Magnitude');
+%Plotting the signals
 figure();
-subplot(2,1,1); plot(F,Y1_HAMM1); title('Frequency spectrum of filtered x(t) - Hamming: N = 21, Fs=100Hz'); xlabel('Frequency'); ylabel('Magnitude');
-subplot(2,1,2); plot(F,Y2_HAMM2); title('Frequency spectrum of filtered x(t) - Hamming: N = 41, Fs=100Hz'); xlabel('Frequency'); ylabel('Magnitude');
+subplot(2,1,1);
+plot(f,X); hold on;
+plot(f,Y1);
+title(strcat('Fs = 100 Hamming filter N = ', num2str(N1))); legend('X(f)','Y(f)');
 
-figure(); 
-subplot(2,1,1); plot(F,Y3_HANN1); title('Frequency spectrum of filtered x(t) - Hanning: N = 21, Fs=100Hz'); xlabel('Frequency'); ylabel('Magnitude');
-subplot(2,1,2); plot(F,Y4_HANN2); title('Frequency spectrum of filtered x(t) - Hanning: N = 41, Fs=100Hz'); xlabel('Frequency'); ylabel('Magnitude');
+subplot(2,1,2);
+plot(f,X); hold on;
+plot(f,Y2);
+title(strcat('Fs = 100 Hamming filter N = ', num2str(N2))); legend('X(f)','Y(f)');
 
+figure();
+subplot(2,1,1);
+plot(f,X); hold on;
+plot(f,Y3);
+title(strcat('Fs = 100 Hanning filter N = ', num2str(N1))); legend('X(f)','Y(f)');
 
+subplot(2,1,2);
+plot(f,X); hold on;
+plot(f,Y4);
+title(strcat('Fs = 100 Hanning filter N = ', num2str(N2))); legend('X(f)','Y(f)');
 %B2 ends
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %B3 begins
 
+Fs = 50;
+Ts = 1/Fs;
+t = [0:N-1]*Ts;
+x = sin(15*t) + 0.25*sin(200*t);
+f = [-Fs/2:Fs/N:Fs/2-Fs/N];
+
+%Filtering the signal through the four different filters
+y1 = filter(hammingfilter1, 1, x);
+y2 = filter(hammingfilter2, 1, x);
+y3 = filter(hanningfilter1, 1, x);
+y4 = filter(hanningfilter2, 1, x);
+
+%Creating the Fourier transformation for the for different signals
+Y1 = abs(fftshift(fft(y1)*Ts));
+Y2 = abs(fftshift(fft(y2)*Ts));
+Y3 = abs(fftshift(fft(y3)*Ts));
+Y4 = abs(fftshift(fft(y4)*Ts));
+X = abs(fftshift(fft(x,N)*Ts));
+
+%Plotting the signals
+figure();
+subplot(2,1,1);
+plot(f,X); hold on;
+plot(f,Y1);
+title(strcat('Fs = 50 Hamming filter N = ', num2str(N1))); legend('X(f)','Y(f)');
+
+subplot(2,1,2);
+plot(f,X); hold on;
+plot(f,Y2);
+title(strcat('Fs = 50 Hamming filter N = ', num2str(N2))); legend('X(f)','Y(f)');
+
+figure();
+subplot(2,1,1);
+plot(f,X); hold on;
+plot(f,Y3);
+title(strcat('Fs = 50 Hanning filter N = ', num2str(N1))); legend('X(f)','Y(f)');
+
+subplot(2,1,2);
+plot(f,X); hold on;
+plot(f,Y4);
+title(strcat('Fs = 50 Hanning filter N = ', num2str(N2))); legend('X(f)','Y(f)');
 
 %B3 ends
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

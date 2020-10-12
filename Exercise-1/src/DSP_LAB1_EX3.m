@@ -23,7 +23,7 @@ xlabel('t(s)');
 ylabel('x(t)');
 hold off;
 
-figure;										%Creating new figure
+figure;										    %Creating new figure
 Fs=1/Ts;										%
 X = fftshift(fft(x1,N)*Ts);						%Creating X(F) from the sampled signal
 F = [-Fs/2:Fs/N:Fs/2-Fs/N];						%F vector declaration
@@ -48,7 +48,7 @@ Fs=1/Ts;
 df = 125;
 f = [100:df:475];
 for k = 1:length(f)
-    figure;									%Creating new figure
+    figure;									    %Creating new figure
     x = sin(2*pi*f(k).*td + l);					%Creating x(t) signal
     X = fftshift(fft(x,N)*Ts);					%Generating Fourier transformation of x(t)
     F = [-Fs/2:Fs/N:Fs/2-Fs/N];					%F vector declaration
